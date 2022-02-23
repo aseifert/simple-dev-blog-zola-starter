@@ -90,6 +90,23 @@
       <meta name="twitter:image" content="{{ get_url(path=config.extra.image) }}">
     {% endif %}
 
+    {% block title %}
+    {% if page.title %}
+        <meta name="twitter:title" content="{{ page.title }}">
+      {% elif section.title %}
+        <meta name="twitter:title" content="{{ section.title }}">
+      {% else %}
+        <meta name="twitter:title" content="{{ config.title }}">
+    {% endif %}
+    <title>
+        {% if page.title %}
+          {{ page.title }}
+        {% else %}
+          {{ config.title }}
+        {% endif %}
+      </title>
+    {% endblock title %}
+
     {% block description %}
       {% if page.description %}
         <meta name="description" content="{{ page.description }}" />
@@ -103,14 +120,6 @@
       {% endif %}
     {% endblock description %}
 
-    {% if page.title %}
-      <meta name="twitter:title" content="{{ page.title }}">
-    {% elif section.title %}
-      <meta name="twitter:title" content="{{ section.title }}">
-    {% else %}
-      <meta name="twitter:title" content="{{ config.title }}">
-    {% endif %}
-
     {% for link in config.extra.nav %}
       <link rel="prerender" href="{{ link.path }}" />
     {% endfor %}
@@ -118,17 +127,8 @@
     {% set icon = resize_image(path=config.extra.profile_small, width=50, height=50, op="fill") -%}
     <link rel="prefetch" href="{{ icon.url }}" />
 
-    <title>
-      {% block title %}
-        {% if page.title %}
-          {{ page.title }}
-        {% else %}
-          {{ config.title }}
-        {% endif %}
-      {% endblock title %}
-    </title>
-
     {% block head %}{% endblock head %}
+
     {% block styles %}
       <link rel="stylesheet" href="{{ get_url(path="main.css") | safe }}">
     {% endblock styles %}

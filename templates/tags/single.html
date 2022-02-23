@@ -2,6 +2,16 @@
 
 {% import "post-preview.html" as post_macros %}
 
+{% block title %}
+  <meta name="twitter:title" content="Alexander Seifert | #{{ term.name }} posts">
+  <title>Alexander Seifert | #{{ term.name }} posts</title>
+{% endblock title %}
+
+{% block description %}
+  <meta name="description" content="Posts tagged #{{ term.name }}" />
+  <meta name="twitter:description" content="Posts tagged #{{ term.name }}">
+{% endblock description %}
+
 {% block posthead %}
   {% for post in term.pages %}
     <link rel="prerender" href="{{ post.permalink }}" />
@@ -9,7 +19,7 @@
 {% endblock posthead %}
 
 {% block content %}
-  <h1>{{ term.pages | length }} pages tagged with "{{ term.name }}"</h1>
+  <h1>{{ term.pages | length }} pages tagged with #{{ term.name }}</h1>
 
   <p><a href="/tags">All tags</a></p>
 
