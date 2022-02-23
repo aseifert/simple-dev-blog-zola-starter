@@ -65,9 +65,9 @@
 
     <meta name="twitter:card" content="summary">
 
-    {% if config.twitter %}
-      <meta name="twitter:creator" content="@{{ config.twitter }}">
-      <meta name="twitter:site" content="@{{ config.twitter }}">
+    {% if config.extra.twitter %}
+      <meta name="twitter:creator" content="@{{ config.extra.twitter }}">
+      <meta name="twitter:site" content="@{{ config.extra.twitter }}">
     {% endif %}
 
     {% if page.extra.thumbnail %}
