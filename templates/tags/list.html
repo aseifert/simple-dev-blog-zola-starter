@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
+{% block title %}
+  {% set title = "Alexander Seifert | Tags" -%}
+  <meta name="og:title" content="{{ title }}">
+  <meta name="twitter:title" content="{{ title }}">
+  <title>{{ title }}</title>
+{% endblock title %}
+
+{% block description %}
+  {% set description = "A list of all the topics I have written about." -%}
+  <meta name="description" content="{{ description }}" />
+  <meta name="og:description" content="{{ description }}" />
+  <meta name="twitter:description" content="{{ description }}">
+{% endblock description %}
+
 {% block posthead %}
   {% for term in terms %}
     <link rel="prerender" href="{{ term.permalink }}" />
