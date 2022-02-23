@@ -3,17 +3,15 @@
 {% import "post-preview.html" as post_macros %}
 
 {% block title %}
-  {% set title = "Alexander Seifert | #{{ term.name }} posts" -%}
-  <meta name="og:title" content="{{ title }}">
-  <meta name="twitter:title" content="{{ title }}">
-  <title>{{ title }}</title>
+  <meta name="og:title" content="Alexander Seifert | #{{ term.name }} posts">
+  <meta name="twitter:title" content="Alexander Seifert | #{{ term.name }} posts">
+  <title>Alexander Seifert | #{{ term.name }} posts</title>
 {% endblock title %}
 
 {% block description %}
-  {% set description = "Posts tagged #{{ term.name }}" -%}
-  <meta name="description" content="{{ description }}" />
-  <meta name="og:description" content="{{ description }}" />
-  <meta name="twitter:description" content="{{ description }}">
+  <meta name="description" content="Posts tagged #{{ term.name }}" />
+  <meta name="og:description" content="Posts tagged #{{ term.name }}" />
+  <meta name="twitter:description" content="Posts tagged #{{ term.name }}">
 {% endblock description %}
 
 {% block posthead %}
