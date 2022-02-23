@@ -2,15 +2,23 @@
   <div class="post-preview">
     <h3 class="post-title"><a href="{{ post.permalink }}">{{ post.title }}</a></h3>
     <small>
-      {{ post.date| date(format="%B %d, %Y") }} - {{ post.word_count }} words - {{ post.reading_time }} mins
+      {{ post.date| date(format="%b %d, %Y") }} •
+      {# {{ post.word_count }} words • #}
+      <span class="tags">
+        {% for tag in post.taxonomies.tags %}
+          <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">{{ tag }}</a>
+        {% endfor %}
+      </span>
     </small>
     <div class="summary">
-      {% if post.summary -%}
+      {% if post.description %}
+        {{ post.description | markdown | safe }}
+      {% elif post.summary %}
         {{ post.summary }}
       {% else %}
-        {{ post.content | safe | striptags | truncate(length=300) }}
+        {{ post.content | safe }}
       {%- endif %}
-      <a href="{{ post.permalink }}">read more</a>
+      <!-- <a href="{{ post.permalink }}">read more</a> -->
     </div>
   </div>
 {% endmacro input %}

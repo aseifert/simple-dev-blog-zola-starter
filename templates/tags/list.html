@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block posthead %} 
+{% block posthead %}
   {% for term in terms %}
     <link rel="prerender" href="{{ term.permalink }}" />
   {% endfor %}
@@ -11,7 +11,7 @@
   <div class="taxonomy-container">
     {% for term in terms %}
       <div class="term">
-       <a href="{{ term.permalink }}">{{ term.name }} ({{ term.pages | length }})</a>
+        <a href="{{ term.permalink }}">{{ term.name }} ({{ term.pages | length }})</a>
       </div>
     {% endfor %}
   </div>
