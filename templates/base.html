@@ -82,6 +82,14 @@
         <meta property="og:image" content="{{ get_url(path=config.extra.default_og_image) }}">
     {% endif %}
 
+    {% if page.image %}
+      <meta name="twitter:image" content="{{ page.image }}">
+    {% elif section.image %}
+      <meta name="twitter:image" content="{{ section.image }}">
+    {% elif config.extra.image %}
+      <meta name="twitter:image" content="{{ get_url(path=config.extra.image) }}">
+    {% endif %}
+
     {% block description %}
       {% if page.description %}
         <meta name="description" content="{{ page.description }}" />
