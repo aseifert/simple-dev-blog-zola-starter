@@ -100,8 +100,8 @@
   {% if not page.extra.hide_thumbnail or page.extra.hide_thumbnail == false %}
     {% if page.extra.thumbnail %}
     <div class="header-image">
-      {% set image = resize_image(path=config.extra.assets_path ~ page.extra.thumbnail, width=680, height=400, op="fit_width") -%}
-      <img class="no-border" width="{{image.width}}" height="{{image.height}}" src="{{ image.url }}">
+      {% set image = resize_image(path=config.extra.assets_path ~ page.extra.thumbnail, width=640, height=480, op="fit_width") -%}
+      <img class="no-border" src="{{ image.url }}">
     </div>
     {% endif %}
   {% endif %}
