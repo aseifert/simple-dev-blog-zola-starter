@@ -76,15 +76,6 @@
 {% endblock %}
 
 {% block content %}
-  {% if not page.extra.hide_thumbnail or page.extra.hide_thumbnail == false %}
-    {% if page.extra.thumbnail %}
-    <div>
-      {% set image = resize_image(path=config.extra.assets_path ~ page.extra.thumbnail, width=680, height=400, op="fit_width") -%}
-      <img class="no-border" width="{{image.width}}" height="{{image.height}}" src="{{ image.url }}">
-    </div>
-    {% endif %}
-  {% endif %}
-
   <div class="post-title">
     <h1>{{ page.title }}</h1>
     <small>
@@ -99,6 +90,15 @@
       {% endif %}
     </small>
   </div>
+
+  {% if not page.extra.hide_thumbnail or page.extra.hide_thumbnail == false %}
+    {% if page.extra.thumbnail %}
+    <div class="header-image">
+      {% set image = resize_image(path=config.extra.assets_path ~ page.extra.thumbnail, width=680, height=400, op="fit_width") -%}
+      <img class="no-border" width="{{image.width}}" height="{{image.height}}" src="{{ image.url }}">
+    </div>
+    {% endif %}
+  {% endif %}
 
 
   {% if page.extra.show_toc == true %}
