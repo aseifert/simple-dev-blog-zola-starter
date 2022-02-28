@@ -24,7 +24,11 @@
         "@id": "https://google.com/article"
       },
       "headline": "{{ page.title }}",
+      {% if page.extra.thumbnail %}
+      "image": ["{{ get_url(path=config.extra.assets_path ~ page.extra.thumbnail) }}"],
+      {% else %}
       "image": [],
+      {% endif %}
       "datePublished": "{{ page.date | date(format="%+") }}",
       "dateModified": "{{ page.date | date(format="%+") }}"{% if config.extra.author %},
       "author": {
