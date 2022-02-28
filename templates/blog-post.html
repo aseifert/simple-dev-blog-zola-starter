@@ -13,7 +13,7 @@
     <link rel="prerender"  href="{{ get_taxonomy_url(kind="tags", name=tag) }}">
   {% endfor %}
 
-  <meta name="publish_date" property="article:published_time" content='{{ page.date | date(format="%+") }}'>
+  <meta name="publish_date" property="article:published_time" content='{{ page.date | date(format="%Y-%m-%d") }}'>
 
   <script type="application/ld+json">
     {
