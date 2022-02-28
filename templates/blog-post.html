@@ -91,6 +91,12 @@
     </small>
   </div>
 
+  {% if page.description %}
+  <div class="lead">
+    {{ page.description }}
+  </div>
+  {% endif %}
+
   {% if not page.extra.hide_thumbnail or page.extra.hide_thumbnail == false %}
     {% if page.extra.thumbnail %}
     <div class="header-image">
