@@ -15,6 +15,10 @@
 
   <meta name="publish_date" property="article:published_time" content='{{ page.date | date(format="%Y-%m-%d") }}'>
 
+  {% if page.updated %}
+  <meta property="article:modified_time" content='{{ page.updated | date(format="%Y-%m-%d") }}'>
+  {% endif %}
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -24,27 +28,36 @@
         "@id": "https://google.com/article"
       },
       "headline": "{{ page.title }}",
+
       {% if page.extra.thumbnail %}
-      "image": ["{{ get_url(path=config.extra.assets_path ~ page.extra.thumbnail) }}"],
+        "image": ["{{ get_url(path=config.extra.assets_path ~ page.extra.thumbnail) }}"],
       {% else %}
-      "image": [],
+        "image": [],
       {% endif %}
-      "datePublished": "{{ page.date | date(format="%+") }}",
-      "dateModified": "{{ page.date | date(format="%+") }}"{% if config.extra.author %},
-      "author": {
-        "@type": "Person",
-        "name": "{{ config.extra.author }}"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "{{ config.extra.author }}"{% if config.extra.icon %},
-        "logo": {
-          "@type": "ImageObject",
-          "url": "{{ get_url(path=config.extra.icon) | safe }}"
-        }
-        {% endif %}
-      }
+
+      {% if config.extra.author %}
+        "author": {
+          "@type": "Person",
+          "name": "{{ config.extra.author }}"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "{{ config.extra.author }}"{% if config.extra.icon %},
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ get_url(path=config.extra.icon) | safe }}"
+          }
+          {% endif %}
+        },
       {% endif %}
+
+      {% if page.updated %}
+        "dateModified": "{{ page.updated | date(format="%+") }}",
+      {% else %}
+        "dateModified": "{{ page.date | date(format="%+") }}",
+      {% endif %}
+
+      "datePublished": "{{ page.date | date(format="%+") }}"
     }
   </script>
 
@@ -79,7 +92,11 @@
   <div class="post-title">
     <h1>{{ page.title }}</h1>
     <small>
+      {% if page.updated %}
+      {{ page.date | date(format="%b %d, %Y") }}; last updated on {{ page.updated | date(format="%b %d, %Y") }}
+      {% else %}
       {{ page.date | date(format="%B %d, %Y") }}
+      {% endif %}
       {% if page.taxonomies.tags %}
         •
         <span class="tags">
