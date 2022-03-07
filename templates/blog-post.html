@@ -110,7 +110,7 @@
 
   {% if page.description %}
   <div class="lead">
-    {{ page.description }}
+    {{ page.description | markdown | safe }}
   </div>
   {% endif %}
 
