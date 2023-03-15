@@ -108,3 +108,9 @@ table tbody tr:nth-of-type(even) {
 table tbody tr:last-of-type {
     border-bottom: 2px solid var(--accent-color);
 }
+
+@media (max-width: 880px) {
+  nav {
+    display: grid;
+  }
+}
