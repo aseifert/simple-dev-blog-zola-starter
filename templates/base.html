@@ -132,7 +132,7 @@
       <link rel="prerender" href="{{ link.path }}" />
     {% endfor %}
 
-    {% set icon = resize_image(path=config.extra.profile_small, width=50, height=50, op="fill") -%}
+    {% set icon = resize_image(path=config.extra.profile_small, width=150, height=150, op="fill") -%}
     <link rel="prefetch" href="{{ icon.url }}" />
 
     {% block head %}{% endblock head %}
@@ -146,7 +146,7 @@
     {% block header %}
       <header>
         <a class="profile-icon" href="/">
-          <img width="50" height="50" src="{{ icon.url }}" alt="profile picture">
+          <img width="150" height="150" src="{{ icon.url }}" alt="profile picture">
         </a>
         <nav>
           {% for link in config.extra.nav %}

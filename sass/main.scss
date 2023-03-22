@@ -108,12 +108,3 @@ table tbody tr:nth-of-type(even) {
 table tbody tr:last-of-type {
     border-bottom: 2px solid var(--accent-color);
 }
-
-.highlight {
-  background: hsla(57, 100%, 70%, 1);
-  background: linear-gradient(90deg, hsla(57, 100%, 70%, 1) 0%, hsla(55, 100%, 59%, 1) 100%);
-  background: -moz-linear-gradient(90deg, hsla(57, 100%, 70%, 1) 0%, hsla(55, 100%, 59%, 1) 100%);
-  background: -webkit-linear-gradient(90deg, hsla(57, 100%, 70%, 1) 0%, hsla(55, 100%, 59%, 1) 100%);
-  border-radius: 4px;
-  padding: 10px
-}
